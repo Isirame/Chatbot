@@ -11,7 +11,7 @@ GraphNode::~GraphNode()
 {
     //// STUDENT CODE
     ////
-    std::cout << "GraphNode address: " << &_chatBot << " Use count: " << "No use count" << std::endl;
+    //std::cout << "GraphNode address: " << &_chatBot << " Use count: " << "No use count" << std::endl;
     //delete _chatBot; 
 
     ////
@@ -40,13 +40,11 @@ void GraphNode::MoveChatbotHere(ChatBot chatbot)
     _chatBot = std::move(chatbot);
     
     _chatBot.SetCurrentNode(this);
-    std::cout << "Reached movechatbothere" << std::endl;
 }
 
 void GraphNode::MoveChatbotToNewNode(GraphNode *newNode)
 {
     newNode->MoveChatbotHere(std::move(_chatBot));
-    std::cout << "Reached movechatbottonewnode" << std::endl;
     //_chatBot = nullptr; // invalidate pointer at source
 }
 ////

@@ -21,7 +21,7 @@ ChatLogic::ChatLogic()
     //_chatBot = new ChatBot("../images/chatbot.png");
     //_chatBot = std::make_shared<ChatBot>("../images/chatbot.png");
     //ChatBot chatbot("../images/chatbot.png");
-    std::cout << "ChatBot Constructor running from chatlogic" << std::endl;
+    //std::cout << "ChatBot Constructor running from chatlogic" << std::endl;
     //_chatBot = &chatbot;
 
     // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
@@ -37,7 +37,7 @@ ChatLogic::~ChatLogic()
     ////
 
     // delete chatbot instance
-    std::cout << "ChatLogic address :" << _chatBot << " Use count: " << "No longer shared pomter" << std::endl;
+    //std::cout << "ChatLogic address :" << _chatBot << " Use count: " << "No longer shared pomter" << std::endl;
     //delete _chatBot;
 
     // delete all nodes
@@ -47,10 +47,10 @@ ChatLogic::~ChatLogic()
     }*/
 
     // delete all edges
-    for (auto it = std::begin(_edges); it != std::end(_edges); ++it)
+    /*for (auto it = std::begin(_edges); it != std::end(_edges); ++it)
     {
         delete *it;
-    }
+    }*/
 
     ////
     //// EOF STUDENT CODE
@@ -223,7 +223,7 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
 
     // add chatbot to graph root node
     ChatBot chatbot = ChatBot("../images/chatbot.png");
-    std::cout << "ChatBot Constructor running from loadanswers function" << std::endl;
+    //std::cout << "ChatBot Constructor running from loadanswers function" << std::endl;
     _chatBot = &chatbot;
 
     // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
