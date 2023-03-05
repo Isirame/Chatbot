@@ -33,18 +33,83 @@ ChatBot::ChatBot(std::string filename)
 ChatBot::~ChatBot()
 {
     std::cout << "ChatBot Destructor" << std::endl;
-
+    std::cout << "Image address in chatbot: " << &_image << std::endl;
     // deallocate heap memory
     if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
     {
-        delete _image;
-        _image = NULL;
+        std::cout << "Image address in chatbot: " << &_image << std::endl;
+        
+        //delete _image;
+        //_image = NULL;
     }
 }
 
 //// STUDENT CODE
 ////
+ChatBot::ChatBot(const ChatBot& other)
+{
+    std::cout << "ChatBot Copy Constructor" << std::endl;
+    this->_chatLogic = other._chatLogic;
+    this->_currentNode = other._currentNode;
+    this->_rootNode = other._rootNode;
+    this->_image = other._image;
 
+}
+
+ChatBot& ChatBot::operator=(const ChatBot& source)
+{
+    std::cout << "ChatBot Assignment Operator" << std::endl;
+    if (this == &source)
+        return *this;
+
+    this->_chatLogic = source._chatLogic;
+    this->_currentNode = source._currentNode;
+    this->_rootNode = source._rootNode;
+    this->_image = source._image;
+    //source._image = NULL;
+
+    return *this;
+}
+ChatBot::ChatBot(ChatBot &&source)
+{
+    std::cout << "ChatBot Move Constructor" << std::endl;
+
+    this->_chatLogic = source._chatLogic;
+    this->_currentNode = source._currentNode;
+    this->_rootNode = source._rootNode;
+    this->_image = source._image;
+    //source._image = NULL;
+
+    source._chatLogic = nullptr;
+    source._currentNode  = nullptr;
+    source._rootNode = nullptr;
+    source._image = NULL;
+    
+}
+ChatBot& ChatBot::operator=(ChatBot&& source)
+{
+    std::cout << "ChatBot Move Operator" << std::endl;
+
+    if (this == &source)
+        return *this;
+
+    this->_chatLogic = source._chatLogic;
+    this->_currentNode = source._currentNode;
+    this->_rootNode = source._rootNode;
+    this->_image = source._image;
+    //source._image = NULL;
+
+    std::cout << "Reached move" << std::endl;
+
+    source._chatLogic = nullptr;
+    source._currentNode  = nullptr;
+    source._rootNode = nullptr;
+    source._image = NULL;
+
+    std::cout << "Reached move" << std::endl;
+
+    return *this;
+}
 ////
 //// EOF STUDENT CODE
 
@@ -84,6 +149,7 @@ void ChatBot::ReceiveMessageFromUser(std::string message)
 
 void ChatBot::SetCurrentNode(GraphNode *node)
 {
+    
     // update pointer to current node
     _currentNode = node;
 
